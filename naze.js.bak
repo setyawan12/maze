@@ -1,6 +1,6 @@
 
 require('./config')
-const { BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
+const { WAConnection, BufferJSON, WA_DEFAULT_EPHEMERAL, generateWAMessageFromContent, proto, generateWAMessageContent, generateWAMessage, prepareWAMessageMedia, areJidsSameUser, getContentType } = require('@adiwajshing/baileys')
 const fs = require('fs')
 const os = require('os')
 const util = require('util')
@@ -18,16 +18,19 @@ const speed = require('performance-now')
 const { performance } = require('perf_hooks')
 const { Primbon } = require('scrape-primbon')
 const primbon = new Primbon()
-const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, getGroupAdmins } = require('./lib/myfunc')
+const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, getGroupAdmins, runtime2 } = require('./lib/myfunc')
 
 const hariini = moment.tz('Asia/Jakarta').format('dddd, DD MMMM YYYY')
 const barat = moment.tz('Asia/Jakarta').format('HH:mm:ss')
 const tengah = moment.tz('Asia/Makassar').format('HH:mm:ss')
 const timur = moment.tz('Asia/Jayapura').format('HH:mm:ss')
-const nyoutube = ('© Naze\nYoutube/Sc :\nhttps://youtube.com/c/Nazedev')  //ubah di config biar ngk emror
+const nyoutube = ('© Dans_bot')  //ubah di config biar ngk emror
 const ini_mark = `0@s.whatsapp.net`
+reply = m.reply
+lolapi = 'ardanfajars'
+//const ara = new WAConnection()
 
-//TIME
+//TIME DATE
 const time2 = moment().tz('Asia/Jakarta').format('HH:mm:ss')  
  if(time2 < "23:59:00"){
 var ucapanWaktu = 'Selamat Malam 🌌'
@@ -47,6 +50,31 @@ var ucapanWaktu = 'Selamat Pagi 🌄'
  if(time2 < "05:00:00"){
 var ucapanWaktu = 'Selamat Pagi 🌉'
  } 
+
+let locale = "id";
+
+let dhate = new Date();
+let datex = dhate.toLocaleDateString(locale, {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+let datexxx = dhate.toLocaleDateString(locale, {
+  day: "numeric",
+  month: "numeric",
+  year: "numeric",
+});
+let d = new Date(new Date + 3600000)
+let dateIslamic = Intl.DateTimeFormat(locale + '-TN-u-ca-islamic', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    }).format(d)
+let gmt = new Date(0).getTime() - new Date("1 January 1970").getTime();
+let week = dhate.toLocaleDateString(locale, { weekday: "long" });
+let weton = ["Pahing", "Pon", "Wage", "Kliwon", "Legi"][
+  Math.floor((dhate * 1 + gmt) / 84600000) % 5
+];
 
 // read database
 let tebaklagu = db.data.game.tebaklagu = []
@@ -576,11 +604,11 @@ Ketik *nyerah* untuk menyerah dan mengakui kekalahan`
             }
             break
 	    case 'donasi': case 'sewabot': case 'sewa': case 'buypremium': case 'donate': {
-                naze.sendMessage(m.chat, { image: { url: 'https://telegra.ph/file/74fd634010128be37972c.jpg' }, caption: `*${ucapanWaktu} Kak ${m.pushName}*\n\n *Jika ingin berdonasi silahkan scan gambar diatas*\n\n*Atau klik link dibawah ini*\n_https://saweria.co/naze_\n\n*Atau Transfer via*\n- *Gopay Dana Ovo Qris ShopeePay*\n Ke nomer berikut : 082113821188\n\n_Terima kasih bagi yang sudah donasi_` }, { quoted: m })
+                naze.sendMessage(m.chat, { image: { url: 'https://saweria.co/twitter_card.png' }, caption: `*${ucapanWaktu} Kak ${m.pushName}*\n\n *Jika ingin berdonasi silahkan klik link dibawah ini*\n_https://saweria.co/ardhans\n\n_Terima kasih bagi yang sudah donasi_` }, { quoted: m })
             }
             break
             case 'sc': {
-                m.reply('https://wa.me/6285822347348')
+                m.reply('https://wa.me/62xxxxxxxxxx')
             }
             break		 
             case 'chat': {
@@ -1499,7 +1527,7 @@ break
                 if (!text) throw `Example : ${prefix + command} story wa anime`
                 let yts = require("yt-search")
                 let search = await yts(text)
-                let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
+                let anu = search.videos[0]
                 let buttons = [
                     {buttonId: `ytmp3 ${anu.url}`, buttonText: {displayText: '♫ Audio'}, type: 1},
                     {buttonId: `ytmp4 ${anu.url}`, buttonText: {displayText: '► Video'}, type: 1}
@@ -1691,7 +1719,7 @@ break
                 naze.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
-            case '3dchristmas': case '3ddeepsea': case 'americanflag': case '3dscifi': case '3drainbow': case '3dwaterpipe': case 'halloweenskeleton': case 'sketch': case 'bluecircuit': case 'space': case 'metallic': case 'fiction': case 'greenhorror': case 'transformer': case 'berry': case 'thunder': case 'magma': case '3dcrackedstone': case '3dneonlight': case 'impressiveglitch': case 'naturalleaves': case 'fireworksparkle': case 'matrix': case 'dropwater':  case 'harrypotter': case 'foggywindow': case 'neondevils': case 'christmasholiday': case '3dgradient': case 'blackpink': case 'gluetext': {
+           /* case '3dchristmas': case '3ddeepsea': case 'americanflag': case '3dscifi': case '3drainbow': case '3dwaterpipe': case 'halloweenskeleton': case 'sketch': case 'bluecircuit': case 'space': case 'metallic': case 'fiction': case 'greenhorror': case 'transformer': case 'berry': case 'thunder': case 'magma': case '3dcrackedstone': case '3dneonlight': case 'impressiveglitch': case 'naturalleaves': case 'fireworksparkle': case 'matrix': case 'dropwater':  case 'harrypotter': case 'foggywindow': case 'neondevils': case 'christmasholiday': case '3dgradient': case 'blackpink': case 'gluetext': {
                 if (!text) throw `Example : ${prefix + command} text`
                 m.reply(mess.wait)
                 naze.sendMessage(m.chat, { image: { url: api('zenz', '/textpro/' + command, { text: text }, 'apikey') }, caption: `Text Pro ${command}` }, { quoted: m})
@@ -1708,7 +1736,7 @@ break
                 m.reply(mess.wait)
                 naze.sendMessage(m.chat, { image: { url: api('zenz', '/ephoto/' + command, { text: text }, 'apikey') }, caption: `Ephoto ${command}` }, { quoted: m })
             }
-            break
+            break*/
 	    case 'nomerhoki': case 'nomorhoki': {
                 if (!Number(text)) throw `Example : ${prefix + command} 6285822347348`
                 let anu = await primbon.nomer_hoki(Number(text))
@@ -2579,7 +2607,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
             case 'owner': case 'creator': {
-                naze.sendContact(m.chat, global.owner, m)
+                naze.sendContact(m.chat, global.owner2, m)
             }
             break
             case 'playstore': {
@@ -2766,6 +2794,9 @@ let alfamart = `628111500959@s.whatsapp.net`
             case 'menu': {
             let ownernya = ownernomer + '@s.whatsapp.net'
             let me = m.sender
+			timestampe = speed();
+latensie = speed() - timestampe
+
             let jawab = `*${ucapanWaktu}*
 ╭──❍「 𝙄𝙉𝙁𝙊 𝙐𝙎𝙀𝙍 」❍
 ├ *Nama* : ${pushname}
@@ -2775,21 +2806,412 @@ let alfamart = `628111500959@s.whatsapp.net`
 ╰──❍
 
 ╭──❍「 𝙄𝙉𝙁𝙊 𝘽𝙊𝙏 」❍
-├ *Nama Bot* : ${pushname}
+├ *Nama Bot* : Dans Bot
 ├ *Powered* : @${ini_mark.split('@')[0]}
 ├ *Owner* : @${ownernya.split('@')[0]}
 ├ *Mode* : ${naze.public ? 'Public' : `Self`}
 ├ *Prefix* :「 MULTI-PREFIX 」
+├ *Speed* : ${latensie.toFixed(4)} miliseconds
+├ *Uptime* : ${runtime2(os.uptime())}
+├ *Runtime* : ${runtime(process.uptime())}
+├ *platform* : ${os.platform()}
 ├ *Total Hit* : ${jumlahcmd}
 ├ *Total Hit Today* : ${jumlahharian}
 ╰──❍
 
 ╭──❍「 𝙄𝙉𝘿𝙊𝙉𝙀𝙎𝙄𝘼𝙉 𝙏𝙄𝙈𝙀 」❍
-├ *Hari Ini* : ${hariini}
+├ *Tanggal* : ${week}, ${datex}
+├ *Tanggal Hijriyah* : ${dateIslamic}
 ├ *Wib* : ${barat} WIB
 ├ *Wita* : ${tengah} WITA
 ├ *Wit* : ${timur} WIT
-╰──❍`
+╰──❍
+
+╭──❍「 𝙊𝙏𝙃𝙀𝙍 」❍
+├ Donasi Yuk https://saweria.co/ardhans
+╰──❍
+
+Berikut kak Menunya :
+
+┌──⭓ *Group Menu*
+│
+│⭔ ${prefix}linkgroup
+│⭔ ${prefix}ephemeral [option]
+│⭔ ${prefix}setppgc [image]
+│⭔ ${prefix}setname [text]
+│⭔ ${prefix}setdesc [text]
+│⭔ ${prefix}group [option]
+│⭔ ${prefix}editinfo [option]
+│⭔ ${prefix}add @user
+│⭔ ${prefix}kick @user
+│⭔ ${prefix}hidetag [text]
+│⭔ ${prefix}tagall [text]
+│⭔ ${prefix}antilink [on/off]
+│⭔ ${prefix}mute [on/off]
+│⭔ ${prefix}promote @user
+│⭔ ${prefix}demote @user
+│⭔ ${prefix}vote [text]
+│⭔ ${prefix}devote
+│⭔ ${prefix}upvote
+│⭔ ${prefix}cekvote
+│⭔ ${prefix}hapusvote
+│
+└───────⭓
+┌──⭓ *Webzone Menu*
+│
+│⭔ ${prefix}playstore
+│⭔ ${prefix}gsmarena
+│⭔ ${prefix}jadwalbioskop
+│⭔ ${prefix}nowplayingbioskop
+│⭔ ${prefix}aminio
+│⭔ ${prefix}wattpad
+│⭔ ${prefix}webtoons
+│⭔ ${prefix}drakor
+│
+└───────⭓
+┌──⭓ *Downloader Menu*
+│
+│⭔ ${prefix}tiktoknowm [url]
+│⭔ ${prefix}tiktokwm [url]
+│⭔ ${prefix}tiktokmp3 [url]
+│⭔ ${prefix}instagram [url]
+│⭔ ${prefix}twitter [url]
+│⭔ ${prefix}twittermp3 [url]
+│⭔ ${prefix}facebook [url]
+│⭔ ${prefix}pinterestdl [url]
+│⭔ ${prefix}ytmp3 [url]
+│⭔ ${prefix}ytmp4 [url]
+│⭔ ${prefix}getmusic [query]
+│⭔ ${prefix}getvideo [query]
+│⭔ ${prefix}umma [url]
+│⭔ ${prefix}joox [query]
+│⭔ ${prefix}soundcloud [url]
+│
+└───────⭓
+┌──⭓ *Search Menu*
+│
+│⭔ ${prefix}play [query]
+│⭔ ${prefix}yts [query]
+│⭔ ${prefix}google [query]
+│⭔ ${prefix}gimage [query]
+│⭔ ${prefix}pinterest [query]
+│⭔ ${prefix}wallpaper [query]
+│⭔ ${prefix}wikimedia [query]
+│⭔ ${prefix}wikipedia [query]
+│⭔ ${prefix}ytsearch [query]
+│⭔ ${prefix}ringtone [query]
+│⭔ ${prefix}stalk [option] [query]
+│⭔ ${prefix}lirik [query]
+│⭔ ${prefix}sfile [query]
+│⭔ ${prefix}carigc [query]
+│
+└───────⭓
+┌──⭓ *Informasi*
+│
+│⭔ ${prefix}kurs
+│⭔ ${prefix}infogempa
+│⭔ ${prefix}jadwaltvnow
+│
+└───────⭓
+┌──⭓ *Edukasi*
+│
+│⭔ ${prefix}tambah
+│⭔ ${prefix}kurang
+│⭔ ${prefix}kali
+│⭔ ${prefix}bagi
+│⭔ ${prefix}pangkat
+│⭔ ${prefix}akar
+│
+└───────⭓
+┌──⭓ *Berita*
+│
+│⭔ ${prefix}merdekanews
+│⭔ ${prefix}kompasnews
+│⭔ ${prefix}liputan6
+│⭔ ${prefix}turnbackhoax
+│⭔ ${prefix}kumparan
+│
+└───────⭓
+┌──⭓ *Random Menu*
+│
+│⭔ ${prefix}coffe
+│⭔ ${prefix}quotesanime
+│⭔ ${prefix}motivasi
+│⭔ ${prefix}dilanquote
+│⭔ ${prefix}bucinquote
+│⭔ ${prefix}katasenja
+│⭔ ${prefix}puisi
+│⭔ ${prefix}couple
+│⭔ ${prefix}anime
+│⭔ ${prefix}waifu
+│⭔ ${prefix}husbu
+│⭔ ${prefix}neko
+│⭔ ${prefix}shinobu
+│⭔ ${prefix}bacot
+│
+└───────⭓
+┌──⭓ *Asupan*
+│
+│⭔ ${prefix}cecan
+│⭔ ${prefix}cogan
+│⭔ ${prefix}cecanhijab
+│⭔ ${prefix}bocil
+│⭔ ${prefix}ukhty
+│⭔ ${prefix}ghea
+│⭔ ${prefix}santuy
+│
+└───────⭓
+┌──⭓ *Text Pro Menu*
+│
+│⭔ ${prefix}neon
+│⭔ ${prefix}greenneon
+│⭔ ${prefix}advanceglow
+│⭔ ${prefix}futureneon
+│⭔ ${prefix}sandwriting
+│⭔ ${prefix}sandsummer
+│⭔ ${prefix}sandengraved
+│⭔ ${prefix}metaldark
+│⭔ ${prefix}neonlight
+│⭔ ${prefix}holographic
+│⭔ ${prefix}text1917
+│⭔ ${prefix}minion
+│⭔ ${prefix}deluxesilver
+│⭔ ${prefix}newyearcard
+│⭔ ${prefix}bloodfrosted
+│⭔ ${prefix}halloween
+│⭔ ${prefix}jokerlogo
+│⭔ ${prefix}fireworksparkle
+│⭔ ${prefix}natureleaves
+│⭔ ${prefix}bokeh
+│⭔ ${prefix}toxic
+│⭔ ${prefix}strawberry
+│⭔ ${prefix}box3d
+│⭔ ${prefix}roadwarning
+│⭔ ${prefix}breakwall
+│⭔ ${prefix}icecold
+│⭔ ${prefix}luxury
+│⭔ ${prefix}cloud
+│⭔ ${prefix}summersand
+│⭔ ${prefix}horrorblood
+│⭔ ${prefix}thunder
+│
+└───────⭓
+┌──⭓ *Ephoto Menu*
+│
+│⭔ ${prefix}wetglass
+│⭔ ${prefix}multicolor3d
+│⭔ ${prefix}watercolor
+│⭔ ${prefix}luxurygold
+│⭔ ${prefix}galaxywallpaper
+│⭔ ${prefix}lighttext
+│⭔ ${prefix}beautifulflower
+│⭔ ${prefix}puppycute
+│⭔ ${prefix}royaltext
+│⭔ ${prefix}heartshaped
+│⭔ ${prefix}birthdaycake
+│⭔ ${prefix}galaxystyle
+│⭔ ${prefix}hologram3d
+│⭔ ${prefix}greenneon
+│⭔ ${prefix}glossychrome
+│⭔ ${prefix}greenbush
+│⭔ ${prefix}metallogo
+│⭔ ${prefix}noeltext
+│⭔ ${prefix}glittergold
+│⭔ ${prefix}textcake
+│⭔ ${prefix}starsnight
+│⭔ ${prefix}wooden3d
+│⭔ ${prefix}textbyname
+│⭔ ${prefix}writegalacy
+│⭔ ${prefix}galaxybat
+│⭔ ${prefix}snow3d
+│⭔ ${prefix}birthdayday
+│⭔ ${prefix}goldplaybutton
+│⭔ ${prefix}silverplaybutton
+│⭔ ${prefix}freefire
+│
+└───────⭓
+┌──⭓ *Image Editor*
+│
+│⭔ ${prefix}invert
+│⭔ ${prefix}skullmask
+│⭔ ${prefix}fisheye
+│⭔ ${prefix}wasted
+│⭔ ${prefix}pencil
+│⭔ ${prefix}cartoon
+│⭔ ${prefix}pixelate
+│⭔ ${prefix}rotate
+│⭔ ${prefix}flip
+│⭔ ${prefix}grayscale
+│⭔ ${prefix}roundimage
+│
+└───────⭓
+┌──⭓ *Fun Menu*
+│
+│⭔ ${prefix}simih
+│⭔ ${prefix}halah
+│⭔ ${prefix}hilih
+│⭔ ${prefix}huluh
+│⭔ ${prefix}heleh
+│⭔ ${prefix}holoh
+│⭔ ${prefix}jadian
+│⭔ ${prefix}jodohku
+│⭔ ${prefix}delttt
+│⭔ ${prefix}tictactoe
+│⭔ ${prefix}family100
+│⭔ ${prefix}tebak [option]
+│⭔ ${prefix}math [mode]
+│⭔ ${prefix}suitpvp [@tag]
+│⭔ ${prefix}tongue
+│
+└───────⭓
+┌──⭓ *Primbon Menu*
+│
+│⭔ ${prefix}nomorhoki
+│⭔ ${prefix}artimimpi
+│⭔ ${prefix}artinama
+│⭔ ${prefix}ramaljodoh
+│⭔ ${prefix}ramaljodohbali
+│⭔ ${prefix}suamiistri
+│⭔ ${prefix}ramalcinta
+│⭔ ${prefix}cocoknama
+│⭔ ${prefix}pasangan
+│⭔ ${prefix}jadiannikah
+│⭔ ${prefix}sifatusaha
+│⭔ ${prefix}rezeki
+│⭔ ${prefix}pekerjaan
+│⭔ ${prefix}nasib
+│⭔ ${prefix}penyakit
+│⭔ ${prefix}tarot
+│⭔ ${prefix}fengshui
+│⭔ ${prefix}haribaik
+│⭔ ${prefix}harisangar
+│⭔ ${prefix}harisial
+│⭔ ${prefix}nagahari
+│⭔ ${prefix}arahrezeki
+│⭔ ${prefix}peruntungan
+│⭔ ${prefix}weton
+│⭔ ${prefix}karakter
+│⭔ ${prefix}keberuntungan
+│⭔ ${prefix}memancing
+│⭔ ${prefix}masasubur
+│⭔ ${prefix}zodiak
+│⭔ ${prefix}shio
+│
+└───────⭓
+┌──⭓ *Shorturl*
+│
+│⭔ ${prefix}tinyurl
+│⭔ ${prefix}isgd
+│⭔ ${prefix}vurl
+│⭔ ${prefix}clp
+│⭔ ${prefix}vgd
+│⭔ ${prefix}ouo
+│⭔ ${prefix}shrtco
+│⭔ ${prefix}cuttly
+│⭔ ${prefix}gg
+│⭔ ${prefix}bitly
+│
+└───────⭓
+┌──⭓ *Convert Menu*
+│
+│⭔ ${prefix}attp
+│⭔ ${prefix}ttp
+│⭔ ${prefix}toimage
+│⭔ ${prefix}removebg
+│⭔ ${prefix}snobg
+│⭔ ${prefix}sticker
+│⭔ ${prefix}stickerwm
+│⭔ ${prefix}emojimix
+│⭔ ${prefix}emojimix2
+│⭔ ${prefix}tovideo
+│⭔ ${prefix}togif
+│⭔ ${prefix}tourl
+│⭔ ${prefix}tovn
+│⭔ ${prefix}tomp3
+│⭔ ${prefix}toaudio
+│⭔ ${prefix}ebinary
+│⭔ ${prefix}dbinary
+│⭔ ${prefix}styletext
+│⭔ ${prefix}smeme
+│⭔ ${prefix}latinkeaksara
+│⭔ ${prefix}aksarakelatin
+│⭔ ${prefix}colorize
+│
+└───────⭓
+┌──⭓ *Main Menu*
+│
+│⭔ ${prefix}ping
+│⭔ ${prefix}owner
+│⭔ ${prefix}menu / ${prefix}help / ${prefix}?
+│⭔ ${prefix}delete
+│⭔ ${prefix}infochat
+│⭔ ${prefix}quoted
+│⭔ ${prefix}listpc
+│⭔ ${prefix}listgc
+│⭔ ${prefix}listonline
+│⭔ ${prefix}speedtest
+│
+└───────⭓
+┌──⭓ *Database Menu*
+│
+│⭔ ${prefix}setcmd
+│⭔ ${prefix}listcmd
+│⭔ ${prefix}delcmd
+│⭔ ${prefix}lockcmd
+│⭔ ${prefix}addmsg
+│⭔ ${prefix}listmsg
+│⭔ ${prefix}getmsg
+│⭔ ${prefix}delmsg
+│
+└───────⭓
+┌──⭓ *Anonymous Menu*
+│
+│⭔ ${prefix}anonymous
+│⭔ ${prefix}start
+│⭔ ${prefix}next
+│⭔ ${prefix}keluar
+│
+└───────⭓
+┌──⭓ *Islamic Menu*
+│
+│⭔ ${prefix}iqra
+│⭔ ${prefix}hadist
+│⭔ ${prefix}alquran
+│⭔ ${prefix}juzamma
+│⭔ ${prefix}tafsirsurah
+│
+└───────⭓
+┌──⭓ *Voice Changer*
+│
+│⭔ ${prefix}bass
+│⭔ ${prefix}blown
+│⭔ ${prefix}deep
+│⭔ ${prefix}earrape
+│⭔ ${prefix}fast
+│⭔ ${prefix}fat
+│⭔ ${prefix}nightcore
+│⭔ ${prefix}reverse
+│⭔ ${prefix}robot
+│⭔ ${prefix}slow
+│⭔ ${prefix}tupai
+│
+└───────⭓
+┌──⭓ *Owner Menu*
+│
+│⭔ ${prefix}react [emoji]
+│⭔ ${prefix}chat [option]
+│⭔ ${prefix}join [link]
+│⭔ ${prefix}leave
+│⭔ ${prefix}block @user
+│⭔ ${prefix}unblock @user
+│⭔ ${prefix}bcgroup [text]
+│⭔ ${prefix}bcall [text]
+│⭔ ${prefix}setppbot [image]
+│⭔ ${prefix}setexif
+│⭔ ${prefix}setmenu [option]
+│
+└───────⭓
+_Donasi Ngab_\n_Jangan Ngarep Free Mulu_`
             let ments = [ownernya, me, ini_mark]
             let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
             await naze.sendButtonText(m.chat, buttons, jawab, nyoutube, m, {mentions: ments})
@@ -3691,6 +4113,962 @@ case 'sound161':
 naze_dev = await getBuffer(`https://github.com/DGXeon/Tiktokmusic-API/raw/master/tiktokmusic/${command}.mp3`)
 await naze.sendMessage(m.chat, { audio: naze_dev, mimetype: 'audio/mp4', ptt: true }, { quoted: m })     
 break
+
+///////////////free
+			case 'bacot':{
+				const a = await fetchJson(`https://api.akuari.my.id/randomtext/bacot`)
+				reply(a.hasil.result)
+				
+			}
+			break
+			case 'sfile': {
+			if (!text) return reply(`Example : ${prefix + command} joox`)
+            let res = await fetchJson(`https://api.akuari.my.id/search/sfilesearch?query=${text}`)
+            let teks = `⭔ *SFILE SEARCH*\n\n`
+            for (let i of res.result) {
+            teks += `⭔ Nama : ${i.nama}\n`
+			teks += `⭔ Ukuran : ${i.size}\n`
+            teks += `⭔ Link : ${i.link}\n\n\n──────────────────────\n`
+            }
+            reply(teks)
+            }
+            break
+			
+case 'carigc': {
+			if (!text) return reply(`Example : ${prefix + command} bot`)
+            let res = await fetchJson(`https://api.akuari.my.id/search/carigc?query=${text}`)
+            let teks = `⭔ *CARI GC WHATSAPP*\n\n`
+            for (let i of res.result) {
+            teks += `⭔ Nama : ${i.nama}\n`
+            teks += `⭔ Link : ${i.link}\n\n\n──────────────────────\n`
+            }
+            reply(teks)
+            }
+            break
+			
+			
+///////////////asupan
+
+case 'bocil':
+case 'ukhty':
+case 'ghea':
+case 'santuy':
+          try {
+			anu = await fetchJson(`https://api.akuari.my.id/asupan/${command}`)
+			naze.sendFileUrl(m.chat, anu.respon, `Nih Kak`, m)
+          } catch {
+            reply(`Yah... Ada Yang Error Nih.`)
+          }
+          break
+		  
+////////////////////////////education
+
+case 'bagi':{
+				if (!text) return reply(`Example : ${prefix + command} 10/2`)
+				let [teks1, teks2] = text.split`/`
+				if (!teks1) return reply(`Example : ${prefix + command} 10/2`)
+				if (!teks2) return reply(`Example : ${prefix + command} 10/2`)
+				//const a = await fetchJson(`https://api.akuari.my.id/edukasi/bagi?angka1=${teks1}&angka2=${teks2}`)
+				const agz = `${teks1}/${teks2}`
+				const za = mathjs.evaluate(agz)
+				teks122 = `*PEMBAGIAN*\n\n${agz}=${za}`
+				reply(teks122)
+				
+			}
+			break
+			
+case 'tambah':{
+				if (!text) return reply(`Example : ${prefix + command} 10+2`)
+				let [teks1, teks2] = text.split`+`
+				if (!teks1) return reply(`Example : ${prefix + command} 10+2`)
+				if (!teks2) return reply(`Example : ${prefix + command} 10+2`)
+				//const a = await fetchJson(`https://api.akuari.my.id/edukasi/tambah?angka1=${teks1}&angka2=${teks2}`)
+				const agz = `${teks1}+${teks2}`
+				const za = mathjs.evaluate(agz)
+				teks122 = `*PENJUMLAHAN*\n\n${agz}=${za}`
+				reply(teks122)
+				
+			}
+			break
+			
+case 'kali':{
+				if (!text) return reply(`Example : ${prefix + command} 10*2`)
+				let [teks1, teks2] = text.split`*`
+				if (!teks1) return reply(`Example : ${prefix + command} 10*2`)
+				if (!teks2) return reply(`Example : ${prefix + command} 10*2`)
+				//const a = await fetchJson(`https://api.akuari.my.id/edukasi/kali?angka1=${teks1}&angka2=${teks2}`)
+				const agz = `${teks1}*${teks2}`
+				const za = mathjs.evaluate(agz)
+				teks122 = `*PERKALIAN*\n\n${agz}=${za}`
+				reply(teks122)
+				
+			}
+			break
+			
+case 'kurang':{
+				if (!text) return reply(`Example : ${prefix + command} 10-2`)
+				let [teks1, teks2] = text.split`-`
+				if (!teks1) return reply(`Example : ${prefix + command} 10-2`)
+				if (!teks2) return reply(`Example : ${prefix + command} 10-2`)
+				//const a = await fetchJson(`https://api.akuari.my.id/edukasi/kurang?angka1=${teks1}&angka2=${teks2}`)
+			const agz = `${teks1}-${teks2}`
+				const za = mathjs.evaluate(agz)
+				teks122 = `*PENGURANGAN*\n\n${agz}=${za}`
+				reply(teks122)
+}
+			break
+			
+case 'pangkat':{
+				if (!text) return reply(`Example : ${prefix + command} 10 2`)
+				if (!args[0]) return reply(`Example : ${prefix + command} 10 2`)
+				if (!args[1]) return reply(`Example : ${prefix + command} 10 2`)
+				const a = await fetchJson(`https://api.akuari.my.id/edukasi/pangkat?angka=${args[0]}&pangkat=${args[1]}`)
+				teks122 = `*PANGKAT*\n\n${a.soal}\n=${a.hasil}`
+				reply(teks122)
+}
+			break
+
+case 'akar':{
+				if (!text) return reply(`Example : ${prefix + command} 25`)
+				const a = await fetchJson(`https://api.akuari.my.id/edukasi/akar?angka=${text}`)
+				teks122 = `*AKAR KUADRAT*\n\n${a.soal}\n=${a.hasil}`
+				reply(teks122)
+}
+			break
+			
+			case 'merdekanews': {
+            let res = await fetchJson(`https://api.akuari.my.id/info/merdeka`)
+            let teks = `⭔ *MERDEKA NEWS*\n\n`
+            for (let i of res.result) {
+            teks += `⭔ Judul : ${i.title}\n`
+			teks += `⭔ Tanggal Upload : ${i.upload_date}\n`
+			teks += `⭔ Link : ${i.link}\n`
+            teks += `⭔ Thumbnail : ${i.thumb}\n\n\n──────────────────────\n`
+            }
+            reply(teks)
+            }
+            break
+			
+case 'kompasnews': {
+            let res = await fetchJson(`https://api.akuari.my.id/info/kompas`)
+            let teks = `⭔ *KOMPAS NEWS*\n\n`
+            for (let i of res.result) {
+            teks += `⭔ Judul : ${i.title}\n`
+			teks += `⭔ Tanggal Upload : ${i.date}\n`
+			teks += `⭔ Label : ${i.label}\n`
+			teks += `⭔ Link : ${i.link}\n`
+            teks += `⭔ Gambar : ${i.image}\n\n\n──────────────────────\n`
+            }
+            reply(teks)
+            }
+            break
+			
+case 'liputan6': {
+            let res = await fetchJson(`https://api.akuari.my.id/info/liputan6`)
+            let teks = `⭔ *LIPUTAN 6 NEWS*\n\n`
+            for (let i of res.result) {
+            teks += `⭔ Judul : ${i.title}\n`
+			teks += `⭔ Tanggal Upload : ${i.date}\n`
+			teks += `⭔ Label : ${i.label}\n`
+			teks += `⭔ Deskripsi : ${i.description}\n`
+			teks += `⭔ Link : ${i.link}\n`
+            teks += `⭔ Gambar : ${i.image}\n\n\n──────────────────────\n`
+            }
+            reply(teks)
+            }
+            break
+			
+case 'turnbackhoax': {
+            let res = await fetchJson(`https://api.akuari.my.id/info/turnbackhoax`)
+            let teks = `⭔ *TURN BACK HOAX*\n\n`
+            for (let i of res.result) {
+            teks += `⭔ Judul : ${i.title}\n`
+			teks += `⭔ Tanggal Upload : ${i.date}\n`
+			teks += `⭔ Deskripsi : ${i.desc}\n`
+			teks += `⭔ Link : ${i.link}\n`
+            teks += `⭔ Gambar : ${i.img}\n\n\n──────────────────────\n`
+            }
+            reply(teks)
+            }
+            break
+			
+case 'kumparan': {
+            let res = await fetchJson(`https://api.lolhuman.xyz/api/kumparan?apikey=${lolapi}`)
+            let teks = `⭔ *KUMPARAN NEWS*\n\n`
+            for (let i of res.result) {
+            teks += `⭔ Judul : ${i.title}\n`
+			teks += `⭔ Tanggal Upload : ${i.publish}\n`
+			teks += `⭔ Kategori : ${i.category}\n`
+			teks += `⭔ Deskripsi : ${i.desc}\n`
+            teks += `⭔ Link : ${i.link}\n\n\n──────────────────────\n`
+            }
+            reply(teks)
+            }
+            break
+			case 'heker2': {
+                reply(`Memproses...`)
+		let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
+                let media = await naze.downloadAndSaveMediaMessage(quoted)
+                    let anu = await TelegraPh(media)
+                    await naze.sendImage(m.chat, `https://api.akuari.my.id/canvas/hacker2?link=${anu}`, `Nih Kak`, m) 
+                await fs.unlinkSync(media)
+            }
+            break
+			case 'heker': {
+                reply(`Memproses...`)
+		let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
+                let media = await naze.downloadAndSaveMediaMessage(quoted)
+                    let anu = await TelegraPh(media)
+                    await naze.sendImage(m.chat, `https://api.akuari.my.id/canvas/hacker?link=${anu}`, `Nih Kak`, m) 
+                await fs.unlinkSync(media)
+            }
+            break
+			
+			//lolhuman
+			case 'jadwaltvnow':{
+const jdwl = await fetchJson(`https://api.lolhuman.xyz/api/jadwaltv/now?apikey=${lolapi}`)
+const ax = jdwl.result
+jdwlteks = `*Jadwal Tv Sekarang*
+
+*ANTV*${ax.antv}\n*GTV*${ax.gtv}\n*INDOSIAR*${ax.indosiar}\n*INEWS TV*${ax.inewstv}\n*KOMPAS*${ax.kompastv}\n*METRO*${ax.metrotv}\n*MNCTV*${ax.mnctv}\n*NET*${ax.nettv}\n*RCTI*${ax.rcti}\n*RTV*${ax.rtv}\n*SCTV*${ax.sctv}\n*TRANS7*${ax.trans7}*TRANSTV*${ax.transtv}\n*TVONE*${ax.tvone}\n*TVRI*${ax.tvri}\n
+
+`
+reply(jdwlteks)
+}
+break
+			case 'invert':
+			case 'skullmask':
+			case 'fisheye':
+			case 'wasted':
+			case 'pencil':
+			case 'cartoon':
+			case 'pixelate':
+			case 'rotate':
+			case 'flip':
+			case 'grayscale':
+			case 'roundimage':
+			reply(`Memproses...`)
+			try{
+					let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
+					let media = await naze.downloadAndSaveMediaMessage(quoted)
+					let anu = await TelegraPh(media)
+					await naze.sendImage(m.chat, `https://api.lolhuman.xyz/api/editor/${command}?apikey=${lolapi}&img=${anu}`, `Nih Kak`, m) 
+					await fs.unlinkSync(media)
+			}catch{
+			reply('Terjadi Kesalahan...\njika masalah ini sering terjadi, harap segera laporkan ke owner bot...')
+			}
+			break
+			case 'ytmp42': case 'ytvideo2': {
+                if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27`
+				const yt = await fetchJson(`https://api.lolhuman.xyz/api/ytvideo2?apikey=${lolapi}&url=${text}`)
+                naze.sendMessage(m.chat, { video: { url: yt.result.link }, mimetype: 'video/mp4', fileName: `${yt.result.title}.mp4`, caption: `⭔ Title : ${yt.result.title}\n⭔ File Size : ${yt.result.size}` }, { quoted: m })
+            }
+            break
+			
+case 'ytmp32': case 'ytaudio2': {
+                if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27`
+				const yt = await fetchJson(`https://api.zekais.com/youtube?url=${text}&apikey=jIQuAqgV`)
+                naze.sendImage(m.chat, yt.thumb, `⭔ Title : ${yt.title}\n⭔ Channel : ${yt.channel}\n⭔ File Size : ${yt.audio[0].size}\n\n`, m)
+                naze.sendMessage(m.chat, { audio: { url: yt.audio[0].url }, mimetype: 'audio/mpeg', fileName: `${yt.title}.mp3` }, { quoted: m })
+            }
+            break
+			
+case 'play2': case 'ytplay2': {
+                if (!text) throw `Example : ${prefix + command} story wa anime`
+                let yts = require("yt-search")
+                let search = await yts(text)
+				console.log(search.videos)
+				let anu = search.videos[0]
+				
+                //let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
+                let buttons = [
+                    {buttonId: `ytmp32 ${anu.url}`, buttonText: {displayText: '♫ Audio'}, type: 1},
+                    {buttonId: `ytmp42 ${anu.url}`, buttonText: {displayText: '► Video'}, type: 1}
+                ]
+                let buttonMessage = {
+                    image: { url: anu.thumbnail },
+                    caption: `
+⭔ Title : ${anu.title}
+⭔ Ext : Search
+⭔ ID : ${anu.videoId}
+⭔ Duration : ${anu.timestamp}
+⭔ Viewers : ${anu.views}
+⭔ Upload At : ${anu.ago}
+⭔ Author : ${anu.author.name}
+⭔ Channel : ${anu.author.url}
+⭔ Description : ${anu.description}
+⭔ Url : ${anu.url}`,
+                    footer: naze.user.name,
+                    buttons: buttons,
+                    headerType: 4
+                }
+                naze.sendMessage(m.chat, buttonMessage, { quoted: m })
+            }
+            break
+			case 'carilagu': {
+                m.reply(`Memproses...`)
+		let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
+                let media = await naze.downloadAndSaveMediaMessage(quoted)
+                    let anu = await UploadFileUgu(media)
+					const wht = await fetchJson(`https://api.lolhuman.xyz/api/musicsearch?apikey=${lolapi}&file=${anu}`)
+					console.log(wht)
+					/*let teks1 = `⭔ *Artis :*\n`
+					for (let i of wht.result.artists) {
+					teks1 += `${i}\n`
+            }
+					let teks2 = `⭔ *Genre :*\n`
+					for (let i of wht.result.genres) {
+					teks2 += `${i}\n`
+            }*/
+				teksnya = `*Musik Ditemukan*\n\n*Judul :* ${wht.result.title}\n*Artis :* ${wht.result.artists[0]}\n*Album :* ${wht.result.album}\n*Genre :* ${wht.result.genres[0]}\n*Rilis :* ${wht.result.release}`
+				m.reply(teksnya)
+                await fs.unlinkSync(media)
+            }
+            break
+			case 'ssweb':
+          if (text == "") return reply('web?')
+          try {
+            reply('Tunggu sebentar...')
+			await naze.sendImage(m.chat, `https://api.lolhuman.xyz/api/sswebfull?apikey=ardanfajars&url=${text}`, `Nih kak`, m)
+          } catch {
+            reply('Terjadi Kesalahan...')
+          }
+          break
+			case 'removebg':
+			case 'nobg':
+case 'imagenobg': {
+                m.reply(`Memproses...`)
+		let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
+                let media = await naze.downloadAndSaveMediaMessage(quoted)
+                    let anu = await TelegraPh(media)
+                    await naze.sendImage(m.chat, `https://api.lolhuman.xyz/api/removebg?apikey=${lolapi}&img=${anu}`, `Nih Kak`, m) 
+                await fs.unlinkSync(media)
+            }
+            break
+
+case 'snobg': {
+               const pp = await m.reply(`Memproses...`)
+		let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
+                let media = await naze.downloadAndSaveMediaMessage(quoted)
+                    let anu = await TelegraPh(media)
+                    //await XeonBotInc.sendImage(m.chat, `https://api.lolhuman.xyz/api/removebg?apikey=${lolapi}&img=${anu}`, `Nih Kak`, m)
+                    naze.sendImageAsSticker(m.chat, `https://api.lolhuman.xyz/api/removebg?apikey=${lolapi}&img=${anu}`, pp, { packname: global.packname, author: global.author })					
+                await fs.unlinkSync(media)
+            }
+            break
+			
+			case 'neon':
+        case 'greenneon':
+        case 'advanceglow':
+        case 'futureneon':
+        case 'sandwriting':
+        case 'sandsummer':
+        case 'sandengraved':
+        case 'metaldark':
+        case 'neonlight':
+        case 'holographic':
+        case 'text1917':
+        case 'minion':
+        case 'deluxesilver':
+        case 'newyearcard':
+        case 'bloodfrosted':
+        case 'halloween':
+        case 'jokerlogo':
+        case 'fireworksparkle':
+        case 'natureleaves':
+        case 'bokeh':
+        case 'toxic':
+        case 'strawberry':
+        case 'box3d':
+        case 'roadwarning':
+        case 'breakwall':
+        case 'icecold':
+        case 'luxury':
+        case 'cloud':
+        case 'summersand':
+        case 'horrorblood':
+        case 'thunder':
+          if (text == "") return reply('Teks Mana Ngab?')
+          try {
+            m.reply('Tunggu sebentar...')
+            console.log(command)
+			await naze.sendImage(m.chat, `http://api.lolhuman.xyz/api/textprome/${command}?apikey=${lolapi}&text=${text}`, `Text Pro ${command}`, m)
+			//naze.sendMessage(m.chat, { image: `http://api.lolhuman.xyz/api/textprome/${command}?apikey=ardanfajars&text=${text}`, caption: `Text Pro ${command}` }, { quoted: m})
+            //await XeonBotInc.sendImage(m.chat, ``, `Nih kak`, m)
+          } catch {
+           m.reply('Terjadi Kesalahan...')
+         }
+          break
+			
+			case 'wetglass':
+        case 'multicolor3d':
+        case 'watercolor':
+        case 'luxurygold':
+        case 'galaxywallpaper':
+        case 'lighttext':
+        case 'beautifulflower':
+        case 'puppycute':
+        case 'royaltext':
+        case 'heartshaped':
+        case 'birthdaycake':
+        case 'galaxystyle':
+        case 'hologram3d':
+        case 'greenneon':
+        case 'glossychrome':
+        case 'greenbush':
+        case 'metallogo':
+        case 'noeltext':
+        case 'glittergold':
+        case 'textcake':
+        case 'starsnight':
+        case 'wooden3d':
+        case 'textbyname':
+        case 'writegalacy':
+        case 'galaxybat':
+        case 'snow3d':
+        case 'birthdayday':
+        case 'goldplaybutton':
+        case 'silverplaybutton':
+        case 'freefire':
+          if (text == "") return reply('Teks Mana Ngab?')
+          try {
+            m.reply('Tunggu sebentar...')
+			await naze.sendImage(m.chat, `http://api.lolhuman.xyz/api/ephoto1/${command}?apikey=ardanfajars&text=${text}`, `Ephoto ${command}`, m)
+			//naze.sendMessage(m.chat, { image: `http://api.lolhuman.xyz/api/ephoto1/${command}?apikey=ardanfajars&text=${text}`, caption: `Ephoto ${command}` }, { quoted: m })
+			//await XeonBotInc.sendImage(m.chat, ``, `Nih kak`, m)
+          } catch {
+            m.reply('Terjadi Kesalahan...')
+          }
+          break
+		  
+		  case 'cecan':
+case 'cogan':
+          try {
+            //m.reply('Tunggu sebentar...')
+			await naze.sendImage(m.chat, `https://api.lolhuman.xyz/api/random/${command}?apikey=${lolapi}`, `Nih kak ${pushname}, ${command}nya`, m)
+          } catch {
+            m.reply(`${command}nya malu nih kak...`)
+          }
+          break
+		  
+		  case 'js':
+        case 'jsholat':
+        case 'jadwalsholat':
+        case 'jadwalshalat':
+          {
+            if (text == "") return reply(`Kirim perintah *${prefix + command}[ kota ]*\nContoh : ${prefix + command} klaten`)
+            const kode = await fetchJson(`https://api.lolhuman.xyz/api/sholat/${text}?apikey=ardanfajars`)
+            const kd = kode.result
+			const p = kd
+            teks = `Jadwal Sholat Untuk Wilayah *${kd.wilayah}* Dan Sekitarnya.\n*Berlaku Hari Ini ${kd.tanggal}*\n\n*Imsak :* ${p.imsak}\n*Subuh :* ${p.subuh}\n*Terbit :* ${p.terbit}\n*Dhuha :* ${p.dhuha}\n*Dzuhur :* ${p.dzuhur}\n*Ashar :* ${p.ashar}\n*Maghrib :* ${p.maghrib}\n*Isya :* ${p.isya}`
+            m.reply(teks)
+          }
+          break
+		  
+		  
+		 case 'kisahnabi':
+{
+if(!text) return m.reply(`Hai Kak ${pushname}, Harap masukan nama Nabi...!`)
+try{
+const a = await fetchJson(`https://api.lolhuman.xyz/api/kisahnabi/${text}?apikey=ardanfajars`)
+const b = a.result
+const teks = `*Kisah Nabi*\n\n\n*Nama:* ${b.name}\n*Tahun Kelahiran:* ${b.thn_kelahiran}\n*Umur:* ${b.age}\n*Tanah Kelahiran:* ${b.place}\n\n${b.story}\n`
+m.reply(teks)
+}catch{
+  m.reply(`Mohon Maaf :(\nTerjadi Kesalahan...`)
+}
+}
+break
+
+
+			
+			//////////////////////////////end
+case 'lirik': {
+			  if (!text) throw `Example : ${prefix + command} satru`
+			  const lirik = await fetchJson(`https://api.akuari.my.id/search/lirik?query=${text}`)
+			  m.reply(`*Lirik Lagu*\n\nJudul : ${text}\n${lirik.result[0].lirik}\n`)
+              }
+              break
+			  
+case 'tinyurl': {
+			  if (!text) throw `Example : ${prefix + command} https://google.com/`
+			  const pen = await fetchJson(`https://api.akuari.my.id/short/tinyurl?link=${text}`)
+			  m.reply(`*Shorturl*\n\n*Url Asli :* ${pen.url_asli}\n*Hasil :* ${pen.hasil}\n`)
+              }
+              break
+case 'isgd': {
+			  if (!text) throw `Example : ${prefix + command} https://google.com/`
+			  const pen = await fetchJson(`https://api.akuari.my.id/short/isgd?link=${text}`)
+			  m.reply(`*Shorturl*\n\n*Url Asli :* ${pen.url_asli}\n*Hasil :* ${pen.hasil.shorturl}\n`)
+              }
+              break
+case 'vurl': {
+			  if (!text) throw `Example : ${prefix + command} https://google.com/`
+			  const pen = await fetchJson(`https://api.akuari.my.id/short/vurl?link=${text}`)
+			  m.reply(`*Shorturl*\n\n*Url Asli :* ${pen.url_asli}\n*Hasil :* ${pen.hasil}\n`)
+              }
+              break
+case 'clp': {
+			  if (!text) throw `Example : ${prefix + command} https://google.com/`
+			  const pen = await fetchJson(`https://api.akuari.my.id/short/clp?link=${text}`)
+			  m.reply(`*Shorturl*\n\n*Url Asli :* ${pen.url_asli}\n*Hasil :* ${pen.hasil.url}\n`)
+              }
+              break
+case 'vgd': {
+			  if (!text) throw `Example : ${prefix + command} https://google.com/`
+			  const pen = await fetchJson(`https://api.akuari.my.id/short/vgd?link=${text}`)
+			  m.reply(`*Shorturl*\n\n*Url Asli :* ${pen.url_asli}\n*Hasil :* ${pen.hasil.shorturl}\n`)
+              }
+              break
+case 'ouo': {
+			  if (!text) throw `Example : ${prefix + command} https://google.com/`
+			  const pen = await fetchJson(`https://api.lolhuman.xyz/api/ouoshortlink?apikey=${lolapi}&url=${text}`)
+			  m.reply(`*Shorturl*\n\n*Url Asli :* ${text}\n*Hasil :* ${pen.result}\n`)
+              }
+              break
+case 'shrtco': {
+			  if (!text) throw `Example : ${prefix + command} https://google.com/`
+			  const pen = await fetchJson(`https://api.lolhuman.xyz/api/shortlink2?apikey=${lolapi}&url=${text}`)
+			  m.reply(`*Shorturl*\n\n*Url Asli :* ${text}\n*Hasil :* ${pen.result}\n`)
+              }
+              break
+case 'cuttly': {
+			  if (!text) throw `Example : ${prefix + command} https://google.com/`
+			  const pen = await fetchJson(`https://api.lolhuman.xyz/api/shortlink3?apikey=${lolapi}&url=${text}`)
+			  m.reply(`*Shorturl*\n\n*Url Asli :* ${text}\n*Hasil :* ${pen.result}\n`)
+              }
+              break
+case 'gg': {
+			  if (!text) throw `Example : ${prefix + command} https://google.com/`
+			  const pen = await fetchJson(`https://api.lolhuman.xyz/api/shortlink4?apikey=${lolapi}&url=${text}`)
+			  m.reply(`*Shorturl*\n\n*Url Asli :* ${text}\n*Hasil :* ${pen.result}\n`)
+              }
+              break
+case 'bitly': {
+			  if (!text) throw `Example : ${prefix + command} https://google.com/`
+			  const pen = await fetchJson(`https://api.xteam.xyz/shorturl/bitly?url=${text}&APIKEY=b29f51be3e50682d`)
+			  m.reply(`*Shorturl*\n\n*Url Asli :* ${text}\n*Hasil :* ${pen.result.link}\n`)
+              }
+              break
+			case 'renunganislam': {
+                await naze.sendImage(m.chat, `https://api.akuari.my.id/islami/renunganislam`, ``, m) 
+            }
+            break
+			
+			case 'alaudio':
+{
+if(!text) return m.reply(`Hai Kak ${pushname}, Harap Makukan Surat Yang Ingin dicari...!`)
+try{
+ayat = "ayat"
+					bhs = ""
+					var responseh = await axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah.json')
+					var surah = responseh.data
+  //console.log(surah.data)
+					var idx = surah.data.findIndex(function (post, index) {
+						if ((post.name.transliteration.id.toLowerCase() == args[0].toLowerCase()) || (post.name.transliteration.en.toLowerCase() == args[0].toLowerCase()))
+							return true;
+					});
+					nmr = surah.data[idx].number
+					if (!isNaN(nmr)) {
+						if (args.length > 2) {
+							ayat = args[1]
+						}
+						if (args.length == 2) {
+							var last = function last(array, n) {
+								if (array == null) return void 0;
+								if (n == null) return array[array.length - 1];
+								return array.slice(Math.max(array.length - n, 0));
+							};
+							ayat = last(args)
+						}
+						pesan = ""
+							var responsih2 = await axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah/'+nmr+'.json')
+							var { name, name_translations, number_of_ayah, number_of_surah, recitations } = responsih2.data
+							pesan = pesan + "Audio Quran Surah ke-" + number_of_surah + " " + name + " (" + name_translations.ar + ") " + "dengan jumlah " + number_of_ayah + " ayat\n"
+							
+            let buttons =  [
+			  {
+                buttonId: `alaudio1 ${text}`,
+                buttonText: {
+                  displayText: 'Mishari Rashid al-`Afasy'
+                },
+                type: 1
+              },
+              {
+                buttonId: `alaudio2 ${text}`,
+                buttonText: {
+                  displayText: `Abdur-Rahman as-Sudais`
+                },
+                type: 1
+              },
+			  {
+                buttonId: `alaudio3 ${text}`,
+                buttonText: {
+                  displayText: `Saad al-Ghamdi `
+                },
+                type: 1
+              },
+            ]
+          
+          
+                    await naze.sendButtonText(m.chat, buttons, `${pesan}\n\n\nSilahkan Pilih Pelantun...`, `➥ Alaudio`, m)
+							
+						
+						}
+}catch{
+m.reply(`Mohon Maaf :(\nTerjadi Kesalahan...`)
+}
+}
+break
+
+case 'alaudio1':{
+try{
+					if(!text) return m.reply(`Surat?`)
+					ayat = "ayat"
+					bhs = ""
+					var responseh = await axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah.json')
+					var surah = responseh.data
+					var idx = surah.data.findIndex(function (post, index) {
+						if ((post.name.transliteration.id.toLowerCase() == args[0].toLowerCase()) || (post.name.transliteration.en.toLowerCase() == args[0].toLowerCase()))
+							return true;
+					});
+					nmr = surah.data[idx].number
+					if (!isNaN(nmr)) {
+						if (args.length > 2) {
+							ayat = args[1]
+						}
+						if (args.length == 2) {
+							var last = function last(array, n) {
+								if (array == null) return void 0;
+								if (n == null) return array[array.length - 1];
+								return array.slice(Math.max(array.length - n, 0));
+							};
+							ayat = last(args)
+						}
+						pesan = ""
+						if (isNaN(ayat)) {
+							var responsih2 = await axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah/'+nmr+'.json')
+							var { name, name_translations, number_of_ayah, number_of_surah, recitations } = responsih2.data
+							pesan = pesan + "Audio Quran Surah ke-" + number_of_surah + " " + name + " (" + name_translations.ar + ") " + "dengan jumlah " + number_of_ayah + " ayat\n"
+							pesan = pesan + "Dilantunkan oleh " + recitations[0].name + "\n"
+							//m.reply(pesan)
+							
+			  naze.sendMessage(m.chat, { audio: { url: recitations[0].audio_url }, mimetype: 'audio/mpeg', fileName: `${name}_${recitations[0].name}.mp3` }, { quoted: m })
+
+						} else {
+							var responsih2 = await axios.get('https://api.quran.sutanlab.id/surah/' + nmr + "/" + ayat)
+							var { data } = responsih2.data
+							var last = function last(array, n) {
+								if (array == null) return void 0;
+								if (n == null) return array[array.length - 1];
+								return array.slice(Math.max(array.length - n, 0));
+							};
+							bhs = last(args)
+							pesan = ""
+							pesan = pesan + data.text.arab + "\n\n"
+							if (bhs == "en") {
+								pesan = pesan + data.translation.en
+							} else {
+								pesan = pesan + data.translation.id
+							}
+							pesan = pesan + "\n\n(Q.S. " + data.surah.name.transliteration.id + ":" + args[1] + ")"
+							await naze.sendFileFromUrl(from, data.audio.secondary[0])
+							naze.sendMessage(m.chat, { audio: { url: data.audio.secondary[0] }, mimetype: 'audio/mpeg', fileName: `${data.surah.name.transliteration.id}.mp3` }, { quoted: m })
+							await m.reply(pesan)
+						}
+						}
+						}catch{
+						m.reply(`Mohon Maaf :(\nTerjadi Kesalahan Saat Memproses Audio`)
+					}
+					}
+					break
+					
+case 'alaudio2':{
+try{
+					if(!text) return m.reply(`Surat?`)
+					ayat = "ayat"
+					bhs = ""
+					var responseh = await axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah.json')
+					var surah = responseh.data
+					var idx = surah.data.findIndex(function (post, index) {
+						if ((post.name.transliteration.id.toLowerCase() == args[0].toLowerCase()) || (post.name.transliteration.en.toLowerCase() == args[0].toLowerCase()))
+							return true;
+					});
+					nmr = surah.data[idx].number
+					if (!isNaN(nmr)) {
+						if (args.length > 2) {
+							ayat = args[1]
+						}
+						if (args.length == 2) {
+							var last = function last(array, n) {
+								if (array == null) return void 0;
+								if (n == null) return array[array.length - 1];
+								return array.slice(Math.max(array.length - n, 0));
+							};
+							ayat = last(args)
+						}
+						pesan = ""
+						if (isNaN(ayat)) {
+							var responsih2 = await axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah/'+nmr+'.json')
+							var { name, name_translations, number_of_ayah, number_of_surah, recitations } = responsih2.data
+							pesan = pesan + "Audio Quran Surah ke-" + number_of_surah + " " + name + " (" + name_translations.ar + ") " + "dengan jumlah " + number_of_ayah + " ayat\n"
+							pesan = pesan + "Dilantunkan oleh " + recitations[1].name + "\n"
+							//m.reply(pesan)
+							
+			  naze.sendMessage(m.chat, { audio: { url: recitations[1].audio_url }, mimetype: 'audio/mpeg', fileName: `${name}_${recitations[1].name}.mp3` }, { quoted: m })
+
+						} else {
+							var responsih2 = await axios.get('https://api.quran.sutanlab.id/surah/' + nmr + "/" + ayat)
+							var { data } = responsih2.data
+							var last = function last(array, n) {
+								if (array == null) return void 0;
+								if (n == null) return array[array.length - 1];
+								return array.slice(Math.max(array.length - n, 0));
+							};
+							bhs = last(args)
+							pesan = ""
+							pesan = pesan + data.text.arab + "\n\n"
+							if (bhs == "en") {
+								pesan = pesan + data.translation.en
+							} else {
+								pesan = pesan + data.translation.id
+							}
+							pesan = pesan + "\n\n(Q.S. " + data.surah.name.transliteration.id + ":" + args[1] + ")"
+							naze.sendMessage(m.chat, { audio: { url: data.audio.secondary[0] }, mimetype: 'audio/mpeg', fileName: `${data.surah.name.transliteration.id}.mp3` }, { quoted: m })
+							await m.reply(pesan)
+						}
+						}
+						}catch{
+						m.reply(`Mohon Maaf :(\nTerjadi Kesalahan Saat Memproses Audio`)
+					}
+					}
+					break
+case 'alaudio3':{
+try{
+					if(!text) return m.reply(`Surat?`)
+					ayat = "ayat"
+					bhs = ""
+					var responseh = await axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah.json')
+					var surah = responseh.data
+					var idx = surah.data.findIndex(function (post, index) {
+						if ((post.name.transliteration.id.toLowerCase() == args[0].toLowerCase()) || (post.name.transliteration.en.toLowerCase() == args[0].toLowerCase()))
+							return true;
+					});
+					nmr = surah.data[idx].number
+					if (!isNaN(nmr)) {
+						if (args.length > 2) {
+							ayat = args[1]
+						}
+						if (args.length == 2) {
+							var last = function last(array, n) {
+								if (array == null) return void 0;
+								if (n == null) return array[array.length - 1];
+								return array.slice(Math.max(array.length - n, 0));
+							};
+							ayat = last(args)
+						}
+						pesan = ""
+						if (isNaN(ayat)) {
+							var responsih2 = await axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah/'+nmr+'.json')
+							var { name, name_translations, number_of_ayah, number_of_surah, recitations } = responsih2.data
+							pesan = pesan + "Audio Quran Surah ke-" + number_of_surah + " " + name + " (" + name_translations.ar + ") " + "dengan jumlah " + number_of_ayah + " ayat\n"
+							pesan = pesan + "Dilantunkan oleh " + recitations[1].name + "\n"
+							//m.reply(pesan)
+							
+              naze.sendMessage(m.chat, { audio: { url: recitations[2].audio_url }, mimetype: 'audio/mpeg', fileName: `${name}_${recitations[2].name}.mp3` }, { quoted: m })
+
+						} else {
+							var responsih2 = await axios.get('https://api.quran.sutanlab.id/surah/' + nmr + "/" + ayat)
+							var { data } = responsih2.data
+							var last = function last(array, n) {
+								if (array == null) return void 0;
+								if (n == null) return array[array.length - 1];
+								return array.slice(Math.max(array.length - n, 0));
+							};
+							bhs = last(args)
+							pesan = ""
+							pesan = pesan + data.text.arab + "\n\n"
+							if (bhs == "en") {
+								pesan = pesan + data.translation.en
+							} else {
+								pesan = pesan + data.translation.id
+							}
+							pesan = pesan + "\n\n(Q.S. " + data.surah.name.transliteration.id + ":" + args[1] + ")"
+							naze.sendMessage(m.chat, { audio: { url: data.audio.secondary[0] }, mimetype: 'audio/mpeg', fileName: `${data.surah.name.transliteration.id}.mp3` }, { quoted: m })
+							await m.reply(pesan)
+						}
+						}
+						}catch{
+						m.reply(`Mohon Maaf :(\nTerjadi Kesalahan Saat Memproses Audio`)
+					}
+					}
+					break
+					
+					case 'alayat':{
+try{
+  aq = args[0]
+    if(!args[0]) return m.reply(`Harap masukan Surat Dan Ayat\nContoh: !alayat al-fatihah 1`)
+  if(!args[1]) return m.reply(`Masukan Ayatnya kaka`)
+					if(!text) return m.reply(`Surat?`)
+					ayat = "ayat"
+					bhs = ""
+					var responseh = await axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah.json')
+					var surah = responseh.data
+					var idx = surah.data.findIndex(function (post, index) {
+						if ((post.name.transliteration.id.toLowerCase() == args[0].toLowerCase()) || (post.name.transliteration.en.toLowerCase() == args[0].toLowerCase()))
+							return true;
+					});
+					nmr = surah.data[idx].number
+  console.log(nmr)
+					if (!isNaN(nmr)) {
+						if (args.length > 2) {
+							ayat = args[0]
+						}
+						if (args.length == 2) {
+							var last = function last(array, n) {
+								if (array == null) return void 0;
+								if (n == null) return array[array.length - 1];
+								return array.slice(Math.max(array.length - n, 0));
+							};
+							ayat = last[args]
+						}
+						pesan = ""
+						if (isNaN(ayat)) //{
+							var responsih2 = await axios.get('https://raw.githubusercontent.com/ArugaZ/grabbed-results/main/islam/surah/'+nmr+'.json')
+							var { name, name_translations, number_of_ayah, number_of_surah, recitations } = responsih2.data
+							pesan = pesan + "Audio Quran Surah ke-" + number_of_surah + " " + name + " (" + name_translations.ar + ") " + "dengan jumlah " + number_of_ayah + " ayat\n"
+							pesan = pesan + "Dilantunkan oleh " + recitations[0].name + "\n"
+            console.log()
+							//m.reply(pesan)
+            console.log(recitations[0].audio_url)
+							console.log(number_of_surah)
+              console.log(args[1])
+
+			naze.sendMessage(m.chat, { audio: { url: `https://api.lolhuman.xyz/api/quran/audio/${number_of_surah}/${args[1]}?apikey=${lolapi}` }, mimetype: 'audio/mpeg', fileName: `${args[0]}_${args[1]}.mp3` }, { quoted: m })
+						}
+						}catch{
+						m.reply(`Mohon Maaf :(\nTerjadi Kesalahan Saat Memproses Audio`)
+					}
+					}
+					break
+					
+			case 'colong': {
+                //replay('mengecek kondisi sekitar')
+				
+				          p = text
+          text2 = p.split('|')
+				let media = await naze.downloadAndSaveMediaMessage(quoted)
+                //if (/sticker/.test(mime)) {
+                    naze.sendImageAsSticker(m.chat, media.toString('base64'), m, {
+            packname: `DansPack`,
+            author: `by.${pushname}`
+          })
+                //} else if (!/sticker/.test(mime)) {
+                    //m.reply(`format salah...`)
+               // }
+                await fs.unlinkSync(media)
+            }
+            break
+			case 'wikipedia':
+          if (text == "") return reply('Mau cari apa kak?')
+          try {
+		  const wiki = await fetchJson(`https://docs-jojo.herokuapp.com/api/wiki?q=${text}`)
+		  reply(`*Wikipedia*\n\n${wiki.result}`)
+          } catch {
+            reply(`Maaf kak aku gak nemuin informasi yang kaka cari.... `)
+          }
+          break
+		  
+case 'tafsir': {
+            if (!text) throw `Example : ${prefix + command} jum'at`
+            let res = await fetchJson(`https://docs-jojo.herokuapp.com/api/tafsir?q=${text}`)
+            let teks = `⭔ *${text}*\n\n`
+            for (let i of res.result) {
+            teks += `⭔ Tafsir : ${i.tafsir}\n`
+            teks += `⭔ Deskripsi : ${i.deskripsi}\n\n\n──────────────────────\n`
+            }
+            m.reply(teks)
+            }
+            break
+			
+case 'kurs': {
+            let res = await fetchJson(`https://docs-jojo.herokuapp.com/api/kurs`)
+            let teks = `⭔ *KURS RUPIAH*\n\n`
+            for (let i of res.result) {
+            teks += `⭔ Kurs : ${i.kurs}\n`
+			teks += `⭔ Tengah : ${i.tengah}\n`
+			teks += `⭔ Jual : ${i.jual}\n`
+            teks += `⭔ Beli : ${i.beli}\n\n\n──────────────────────\n`
+            }
+            m.reply(teks)
+            }
+            break
+			
+case 'colorize': {
+                m.reply(`Memproses...`)
+		let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
+                let media = await naze.downloadAndSaveMediaMessage(quoted)
+                    let anu = await TelegraPh(media)
+                    await naze.sendImage(m.chat, `https://docs-jojo.herokuapp.com/api/colorize-old-photo?image_url=${anu}`, `Nih Kak`, m) 
+                await fs.unlinkSync(media)
+            }
+            break
+			
+case 'tongue':
+          try {
+		  const a = await fetchJson(`https://docs-jojo.herokuapp.com/api/tongue_twister`)
+		  reply(`*${a.result}*`)
+          } catch {
+            reply(`Terjadi Kesalahan...`)
+          }
+          break
+			
+			
+			
+			case 'cecanhijab':
+          try {
+            //m.reply('Tunggu sebentar...')
+			anu = await fetchJson(`https://api.akuari.my.id/asupan/hijab`)
+			await naze.sendImage(m.chat, anu.respon, `Nih kak ${pushname}, cecannya`, m)
+          } catch {
+            m.reply(`cecannya malu nih kak...`)
+          }
+          break
+		  
+			case 'infogempa':
+        case 'gempa': {
+          m.reply("Mendapatkan Informasi Gempa Terkini...")
+          res = await fetchJson(`https://hadi-api.herokuapp.com/api/infogempa`)
+          const p = res.result
+          //console.log(p)
+          teks = `*Waktu :* ${p.waktu}\n*Magnitudo :* ${p.magnitudo}SR\n*Kedalaman :* ${p.kedalaman}\n*Lokasi :* ${p.lokasi}\n*Koordinat :* ${p.kordinat}\n*Dirasakan :* ${p.dirasakan}`
+          await naze.sendImage(m.chat, p.url_map, `*INFORMASI GEMPA BUMI TERKINI*\n\n${teks}`, m)
+        }
+          break
+		  case 'latinkeaksara':
+if(!text) return m.reply(`Hai Kak ${pushname}, Harap masukan teks yang ingin diterjemahkan...!`)
+try{
+anu = await fetchJson(`https://api.akuari.my.id/other/latinkeaksara?query=${text}`)
+teks = `*LATIN KE AKSARA JAWA*\n\nLatin : ${text}\nAksara Jawa : ${anu.hasil}`
+m.reply(teks)
+} catch {
+m.reply(`Terjadi Kesalahan...`)
+ }
+break
+
+case 'aksarakelatin':
+if(!text) return m.reply(`Hai Kak ${pushname}, Harap masukan teks yang ingin diterjemahkan...!`)
+try{
+anu = await fetchJson(`https://api.akuari.my.id/other/aksarakelatin?query=${encodeURIComponent(text)}`)
+console.log(anu.hasil)
+console.log(encodeURIComponent(text))
+teks = `*AKSARA JAWA KE LATIN*\n\nAksara Jawa : ${text}\nLatin : ${anu.hasil}`
+m.reply(teks)
+} catch {
+m.reply(`Terjadi Kesalahan...`)
+ }
+break
+			///////////////////////////////end
             default:
                 if (budy.startsWith('=>')) {
                     if (!isCreator) return m.reply(mess.owner)
