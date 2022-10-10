@@ -5068,6 +5068,167 @@ m.reply(teks)
 m.reply(`Terjadi Kesalahan...`)
  }
 break
+
+
+//////pln
+case 'plntagihantegalngandong':
+{
+  try{
+reply('Sedang Mengumpulkan Data & Menjumlahkan...')
+const a = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041095729?apikey=${lolapi}`)
+const b = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524042004164?apikey=${lolapi}`)
+const c = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041529877?apikey=ardanfajars`)
+const d = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041143273?apikey=ardanfajars`)
+const e = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041114669?apikey=ardanfajars`)
+//const f = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041103920?apikey=ardanfajars`)
+const g = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041136709?apikey=ardanfajars`)
+const h = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041136725?apikey=ardanfajars`)
+const i = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041137139?apikey=ardanfajars`)
+
+const j = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041140243?apikey=ardanfajars`)
+const k = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041140250?apikey=ardanfajars`)
+
+const l = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041140276?apikey=ardanfajars`)
+const m = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041141636?apikey=ardanfajars`)
+const n = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041141644?apikey=ardanfajars`)
+//const o = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041141651?apikey=ardanfajars`)
+const p = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041141677?apikey=ardanfajars`)
+const q = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041141715?apikey=ardanfajars`)
+const r = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041141756?apikey=ardanfajars`)
+const s = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041143813?apikey=ardanfajars`)
+const t = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041143854?apikey=ardanfajars`)
+const u = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041144123?apikey=ardanfajars`)
+const v = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041221204?apikey=ardanfajars`)
+const w = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041304115?apikey=ardanfajars`)
+//const x = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041308711?apikey=ardanfajars`)
+const y = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041414303?apikey=ardanfajars`)
+const z = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041443132?apikey=ardanfajars`)
+const aa = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041464087?apikey=ardanfajars`)
+const ab = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041464730?apikey=ardanfajars`)
+const ac = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041464748?apikey=ardanfajars`)
+const ad = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041478690?apikey=ardanfajars`)
+const ae = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041508063?apikey=ardanfajars`)
+const af = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041516672?apikey=ardanfajars`)
+const ag = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041523937?apikey=ardanfajars`)
+m.reply('Data Sudah Didapat, Bot Sedang Menghitung dan Merapikan Data, \n\n_Harap Ditunggu..._')
+
+const az = `${a.result.amount}+3000`
+const bz = `${b.result.amount}+3000`
+const cz = `${c.result.amount}+3000`
+const dz = `${d.result.amount}+3000`
+const ez = `${e.result.amount}+3000`
+//const fz = `${f.result.amount}+3000`
+const gz = `${g.result.amount}+3000`
+const hz = `${h.result.amount}+3000`
+const iz = `${i.result.amount}+3000`
+
+const jz = `${j.result.amount}+3000`
+const kz = `${k.result.amount}+3000`
+
+const lz = `${l.result.amount}+3000`
+const mz = `${m.result.amount}+3000`
+const nz = `${n.result.amount}+3000`
+//const oz = `${o.result.amount}+3000`
+const pz = `${p.result.amount}+3000`
+const qz = `${q.result.amount}+3000`
+const rz = `${r.result.amount}+3000`
+const sz = `${s.result.amount}+3000`
+const tz = `${t.result.amount}+3000`
+const uz = `${u.result.amount}+3000`
+const vz = `${v.result.amount}+3000`
+const wz = `${w.result.amount}+3000`
+//const xz = `${x.result.amount}+3000`
+const yz = `${y.result.amount}+3000`
+const zz = `${z.result.amount}+3000`
+const aaz = `${aa.result.amount}+3000`
+const abz = `${ab.result.amount}+3000`
+const acz = `${ac.result.amount}+3000`
+const adz = `${ad.result.amount}+3000`
+const aez = `${ae.result.amount}+3000`
+const afz = `${af.result.amount}+3000`
+const agz = `${ag.result.amount}+3000`
+
+
+const za = mathjs.evaluate(az)
+const zb = mathjs.evaluate(bz)
+const zc = mathjs.evaluate(cz)
+const zd = mathjs.evaluate(dz)
+const ze = mathjs.evaluate(ez)
+//const zf = mathjs.evaluate(fz)
+const zg = mathjs.evaluate(gz)
+const zh = mathjs.evaluate(hz)
+const zi = mathjs.evaluate(iz)
+
+const zj = mathjs.evaluate(jz)
+const zk = mathjs.evaluate(kz)
+
+const zl = mathjs.evaluate(lz)
+const zm = mathjs.evaluate(mz)
+const zn = mathjs.evaluate(nz)
+//const zo = mathjs.evaluate(oz)
+const zp = mathjs.evaluate(pz)
+const zq = mathjs.evaluate(qz)
+const zr = mathjs.evaluate(rz)
+const zs = mathjs.evaluate(sz)
+const zt = mathjs.evaluate(tz)
+const zu = mathjs.evaluate(uz)
+const zv = mathjs.evaluate(vz)
+const zw = mathjs.evaluate(wz)
+//const zx = mathjs.evaluate(xz)
+const zy = mathjs.evaluate(yz)
+const zzz = mathjs.evaluate(zz)
+const zaa = mathjs.evaluate(aaz)
+const zab = mathjs.evaluate(abz)
+const zac = mathjs.evaluate(acz)
+const zad = mathjs.evaluate(adz)
+const zae = mathjs.evaluate(aez)
+const zaf = mathjs.evaluate(afz)
+const zag = mathjs.evaluate(agz)
+const hsl = `${za}+${zb}+${zc}+${zd}+${ze}+${zg}+${zh}+${zi}+${zj}+${zk}+${zl}+${zm}+${zn}+${zp}+${zq}+${zr}+${zs}+${zt}+${zu}+${zv}+${zw}+${zy}+${zz}+${zaa}+${zab}+${zac}+${zad}+${zae}+${zaf}+${zag}`
+const total = mathjs.evaluate(hsl)
+const teks = `*Tagihan Listrik Tegal Ngandong*
+
+1.${a.result.name} = *Rp.${za}*
+2.${b.result.name} = *Rp.${zb}*
+3.${c.result.name} = *Rp.${zc}*
+4.${d.result.name} = *Rp.${zd}*
+5.${e.result.name} = *Rp.${ze}*
+6.${g.result.name} = *Rp.${zg}*
+7.${h.result.name} = *Rp.${zh}*
+8.${i.result.name} = *Rp.${zi}*
+9.${j.result.name} = *Rp.${zj}*
+10.${k.result.name} = *Rp.${zk}*
+11.${l.result.name} = *Rp.${zl}*
+12.${m.result.name} = *Rp.${zm}*
+13.${n.result.name} = *Rp.${zn}*
+14.${p.result.name} = *Rp.${zp}*
+15.${q.result.name} = *Rp.${zq}*
+16.${r.result.name} = *Rp.${zr}*
+17.${s.result.name} = *Rp.${zs}*
+18.${t.result.name} = *Rp.${zt}*
+19.${u.result.name} = *Rp.${zu}*
+20.${v.result.name} = *Rp.${zv}*
+21.${w.result.name} = *Rp.${zw}*
+22.${y.result.name} = *Rp.${zy}*
+23.${z.result.name} = *Rp.${zzz}*
+24.${aa.result.name} = *Rp.${zaa}*
+25.${ab.result.name} = *Rp.${zab}*
+26.${ac.result.name} = *Rp.${zac}*
+27.${ad.result.name} = *Rp.${zad}*
+28.${ae.result.name} = *Rp.${zae}*
+29.${af.result.name} = *Rp.${zaf}*
+30.${ag.result.name} = *Rp.${zag}*
+
+
+Total : *${total}*`
+reply(teks)
+  }catch{
+    reply(`Tagihan Terpantau Sudah Dibayarkan...`)
+  }
+}
+break
+
+
 			///////////////////////////////end
             default:
                 if (budy.startsWith('=>')) {

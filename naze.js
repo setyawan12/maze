@@ -5074,7 +5074,7 @@ break
 case 'plntagihantegalngandong':
 {
   try{
-reply('Sedang Mengumpulkan Data & Menjumlahkan...')
+m.reply('Sedang Mengumpulkan Data & Menjumlahkan...')
 const a = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041095729?apikey=${lolapi}`)
 const b = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524042004164?apikey=${lolapi}`)
 const c = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041529877?apikey=ardanfajars`)
@@ -5221,7 +5221,7 @@ const teks = `*Tagihan Listrik Tegal Ngandong*
 
 
 Total : *${total}*`
-reply(teks)
+m.reply(teks)
   }catch{
     reply(`Tagihan Terpantau Sudah Dibayarkan...`)
   }
