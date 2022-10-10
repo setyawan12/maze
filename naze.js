@@ -175,8 +175,8 @@ module.exports = naze = async (naze, m, chatUpdate, store) => {
 
 	// reset limit every 12 hours
         let cron = require('node-cron')
-        cron.schedule('00 00 1 * *', () => {
-            hisoka.sendMessage(nmre, {text: 'Terpantau Online' })
+        cron.schedule('00 00 01 * *', () => {
+            hisoka.sendMessage('6281215389681@s.whatsapp.net', {text: 'Terpantau Online' })
         }, {
             scheduled: true,
             timezone: "Asia/Jakarta"
@@ -5080,7 +5080,7 @@ break
 case 'plntagihantegalngandong':
 {
   try{
-m.reply('Sedang Mengumpulkan Data & Menjumlahkan...')
+reply('Sedang Mengumpulkan Data & Menjumlahkan...')
 const a = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041095729?apikey=${lolapi}`)
 const b = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524042004164?apikey=${lolapi}`)
 const c = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041529877?apikey=ardanfajars`)
@@ -5116,7 +5116,7 @@ const ad = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/52404147
 const ae = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041508063?apikey=ardanfajars`)
 const af = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041516672?apikey=ardanfajars`)
 const ag = await fetchJson(`https://api.lolhuman.xyz/api/tagihanlistrik/524041523937?apikey=ardanfajars`)
-m.reply('Data Sudah Didapat, Bot Sedang Menghitung dan Merapikan Data, \n\n_Harap Ditunggu..._')
+
 
 const az = `${a.result.amount}+3000`
 const bz = `${b.result.amount}+3000`
